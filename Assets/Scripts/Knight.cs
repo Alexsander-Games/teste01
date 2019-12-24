@@ -15,12 +15,14 @@ public class Knight : MonoBehaviour
     bool isJumping;
     Rigidbody2D body;
     SpriteRenderer sprite;
+    Animator anim;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         remaningJumps = extraJumps;
+        anim = GetComponent<Animator>();
     }
 
 
@@ -36,6 +38,8 @@ public class Knight : MonoBehaviour
         {
             remaningJumps = extraJumps;
         }
+
+        PlayerAnimation();
 
         isOnFloor = body.IsTouchingLayers(whatIsGround);
     }
@@ -64,5 +68,13 @@ public class Knight : MonoBehaviour
     void FLip()
     {
         sprite.flipX = !sprite.flipX;
+    }
+
+    void PlayerAnimation() {
+        if (body.velocity.x == 0 && body.velocity.y == 0) {
+            anim.Play("Idle");
+        } else if (body.velocity.x != 0) {
+            anim.Play("walk");
+        }
     }
 }
