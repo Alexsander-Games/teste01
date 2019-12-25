@@ -71,10 +71,7 @@ public class Knight : MonoBehaviour
     }
 
     void PlayerAnimation() {
-        if (body.velocity.x == 0 && body.velocity.y == 0) {
-            anim.Play("Idle");
-        } else if (body.velocity.x != 0) {
-            anim.Play("walk");
-        }
+        anim.SetFloat("VelX",Mathf.Abs(body.velocity.x));
+        anim.SetFloat("VelY", Mathf.Abs(body.velocity.y));
     }
 }
