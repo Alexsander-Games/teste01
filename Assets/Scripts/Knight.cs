@@ -63,6 +63,10 @@ public class Knight : MonoBehaviour
         {
             body.velocity += Vector2.up * -0.8f;
         }
+
+        if (Input.GetButtonDown("Fire1")) {
+            anim.SetTrigger("meleeAtk");
+        }
     }
 
     void FLip()
@@ -72,6 +76,6 @@ public class Knight : MonoBehaviour
 
     void PlayerAnimation() {
         anim.SetFloat("VelX",Mathf.Abs(body.velocity.x));
-        anim.SetFloat("VelY", Mathf.Abs(body.velocity.y));
+        anim.SetFloat("VelY", Mathf.Abs(body.velocity.y)); 
     }
 }
